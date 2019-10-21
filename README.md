@@ -1,2 +1,2 @@
-# posloupnosti
+# Posloupnosti
 Very simple html game.

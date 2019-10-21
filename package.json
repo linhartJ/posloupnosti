@@ -1,0 +1,30 @@
+{
+  "name": "posloupnosti",
+  "version": "1.0.0",
+  "description": "Simple html game",
+  "main": "index.js",
+  "scripts": {
+    "build": "gulp"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/linhartJ/posloupnosti.git"
+  },
+  "keywords": [
+    "html",
+    "js",
+    "game"
+  ],
+  "author": "Jiří Linhart",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/linhartJ/posloupnosti/issues"
+  },
+  "homepage": "https://github.com/linhartJ/posloupnosti#readme",
+  "devDependencies": {
+    "gulp": "^4.0.2",
+    "gulp-clean": "^0.4.0",
+    "gulp-typescript": "^5.0.1",
+    "typescript": "^3.6.4"
+  }
+}
