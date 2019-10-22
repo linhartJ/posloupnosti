@@ -18,6 +18,14 @@ function getCurrentTask(): Task {
 }
 
 function onStart() {
+    document.childNodes.forEach(n => n.remove());
+    document.write('<div>\n' +
+        '        <h1>Posloupnosti</h1>\n' +
+        '        <div id="hint"></div>\n' +
+        '        <input id="userInput" type="text"/>\n' +
+        '        <input id="okButton" type="submit" value="Odeslat"/>\n' +
+        '        <div id="errorInfo"></div>\n' +
+        '    </div>');
     document.getElementById("okButton").onclick = trySubmit;
     document.getElementById("userInput")
         .addEventListener("keyup", (event) => {
