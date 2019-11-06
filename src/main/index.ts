@@ -23,7 +23,7 @@ function getCurrentTask(): Task {
 }
 
 function onStart() {
-    const body =document.getElementsByTagName("body")[0];
+    const body = document.getElementsByTagName("body")[0];
     body.innerHTML = '<body>\n' +
         '        <div class="w3-container w3-center"><h1 class="w3-text-white">Posloupnosti</h1></div>\n' +
         '        <div class="w3-container w3-center w3-margin"><div class="w3-text-white" id="hint"></div></div>\n' +
@@ -33,7 +33,14 @@ function onStart() {
         '    </body>';
     document.getElementById("okButton").onclick = trySubmit;
     document.getElementById("form").onsubmit = trySubmit;
+    document.getElementById("errorInfo").onclick = showBeginnersHint;
     setTask(currentTask);
+    showBeginnersHint();
+}
+
+function showBeginnersHint() {
+    const h = "Počítej stejně jako nápověda.\nNápověda = jedna\nOdpověď = dva (jedna + 1)";
+    setErrorInfo(h);
 }
 
 function getUserInput(): HTMLInputElement {
@@ -50,16 +57,29 @@ function setErrorInfo(infoMessage: string) {
     info.innerHTML = infoMessage;
 }
 
+let tempHash: number = 0;
+
+function spiderSaysTemp(randomErrorMessage) {
+    const r = Math.random();
+    tempHash = r;
+    setErrorInfo(randomErrorMessage);
+    setTimeout(() => {
+        if (tempHash === r) setErrorInfo("")
+    }, 2000);
+}
+
 function inputDoesNotMatch() {
     const randomErrorMessage = em[Math.floor(Math.random() * em.length)];
-    setErrorInfo(randomErrorMessage);
-    setTimeout(() => setErrorInfo(""), 2000);
+    spiderSaysTemp(randomErrorMessage);
 }
 
 function trySubmit(e: Event | undefined) {
-    if(e!==undefined && e.preventDefault) e.preventDefault();
+    if (e !== undefined && e.preventDefault) e.preventDefault();
     if (getCurrentTask().matchesUserInput()) {
+        if (currentTask === 4) spiderSaysTemp("Dobře ty!");
         setTask(++currentTask);
+    } else if (currentTask === 0) {
+        showBeginnersHint()
     } else {
         inputDoesNotMatch()
     }
@@ -81,6 +101,7 @@ class Task {
         return getUserInput().value.toUpperCase() === this.value.toUpperCase();
     }
 }
+
 const em = [
     "Nope, zkus to znovu",
     "Je to sice blbě, ale nevzdávej to!",
