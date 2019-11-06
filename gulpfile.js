@@ -21,4 +21,14 @@ function copyIndex() {
         .pipe(gulp.dest("build"));
 }
 
-exports.default = gulp.series(cleanTask, typescriptTask, copyIndex);
+function copyStylesheet() {
+    return gulp.src("src/main/w3.css")
+        .pipe(gulp.dest("build"));
+}
+
+function copyResources() {
+    return gulp.src("src/resources/*")
+        .pipe(gulp.dest("build"));
+}
+
+exports.default = gulp.series(cleanTask, typescriptTask, copyIndex, copyStylesheet, copyResources);
