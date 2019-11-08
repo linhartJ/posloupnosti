@@ -38,9 +38,9 @@ function onStart() {
     showBeginnersHint();
 }
 
+const beginnersHint = "Počítej stejně jako nápověda.<br/>Nápověda = jedna.<br/>Odpověď = dva (jedna + 1)";
 function showBeginnersHint() {
-    const h = "Počítej stejně jako nápověda.\nNápověda = jedna\nOdpověď = dva (jedna + 1)";
-    setErrorInfo(h);
+    setErrorInfo(beginnersHint);
 }
 
 function getUserInput(): HTMLInputElement {
@@ -63,9 +63,14 @@ function spiderSaysTemp(randomErrorMessage) {
     const r = Math.random();
     tempHash = r;
     setErrorInfo(randomErrorMessage);
+    const onClearMessage = shouldDisplayBeginnersHint() ? beginnersHint : "";
     setTimeout(() => {
-        if (tempHash === r) setErrorInfo("")
+        if (tempHash === r) setErrorInfo(onClearMessage)
     }, 2000);
+}
+
+function shouldDisplayBeginnersHint(): boolean {
+    return currentTask < 5;
 }
 
 function inputDoesNotMatch() {
@@ -73,15 +78,18 @@ function inputDoesNotMatch() {
     spiderSaysTemp(randomErrorMessage);
 }
 
+function inputMatches() {
+    const randomSuccessMessage = sm[Math.floor(Math.random() * sm.length)];
+    spiderSaysTemp(randomSuccessMessage);
+    setTask(++currentTask);
+}
+
 function trySubmit(e: Event | undefined) {
     if (e !== undefined && e.preventDefault) e.preventDefault();
     if (getCurrentTask().matchesUserInput()) {
-        if (currentTask === 4) spiderSaysTemp("Dobře ty!");
-        setTask(++currentTask);
-    } else if (currentTask === 0) {
-        showBeginnersHint()
+        inputMatches();
     } else {
-        inputDoesNotMatch()
+        inputDoesNotMatch();
     }
     return false;
 }
@@ -101,6 +109,14 @@ class Task {
         return getUserInput().value.toUpperCase() === this.value.toUpperCase();
     }
 }
+
+const sm = [
+    "Dobře ty!",
+    "Paráda",
+    "Správně!",
+    "Chytrý!",
+    "Už tě nemám co naučit."
+];
 
 const em = [
     "Nope, zkus to znovu",
