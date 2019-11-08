@@ -2,6 +2,7 @@ const gulp = require('gulp');
 const ts = require('gulp-typescript');
 const clean = require('gulp-clean');
 const fs = require('fs');
+var uglify = require('gulp-uglify');
 const tsProject = ts.createProject('tsconfig.json');
 
 function cleanTask() {
@@ -13,7 +14,9 @@ function cleanTask() {
 function typescriptTask() {
     return tsProject.src()
         .pipe(tsProject())
-        .js.pipe(gulp.dest('build'));
+        .js
+        .pipe(uglify())
+        .pipe(gulp.dest('build'));
 }
 
 function copyIndex() {
