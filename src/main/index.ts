@@ -7,11 +7,17 @@ function setHint(hintText) {
     hint.innerHTML = hintText;
 }
 
+function setLevel(level: number) {
+    const levelEl = document.getElementById("level");
+    levelEl.innerHTML = "" + level;
+}
+
 function setTask(taskIdx) {
     const t = allTasks[taskIdx];
     getUserInput().value = "";
     if (t !== undefined) {
-        setHint(`(${ currentTask + 1 }) - ${ t.hint }`);
+        setLevel(currentTask + 1);
+        setHint(t.hint);
     } else {
         setHint(`Gratulujeme, jste u konce. Tajnou zprávu sdělte šéfredaktorce Monče.`);
         setErrorInfo(fm.reduce((acc, idx) => acc + c[idx], ""));
@@ -26,7 +32,8 @@ function onStart() {
     const body = document.getElementsByTagName("body")[0];
     body.innerHTML = '<body>\n' +
         '        <div class="w3-container w3-center"><h1 class="w3-text-white">Posloupnosti</h1></div>\n' +
-        '        <div class="w3-container w3-center w3-margin"><div class="w3-text-white" id="hint"></div></div>\n' +
+        '        <div class="w3-container w3-center w3-margin"><div class="w3-text-white">Level <span id="level" class="w3-badge w3-red"></span></div></div>\n' +
+        '        <div class="w3-container w3-center w3-margin"><div class="w3-text-white" >Nápověda: <span id="hint"></span></div>\n' +
         '        <div class="w3-container w3-center w3-margin"><form id="form"><input class="" id="userInput" type="text"/></form></div>\n' +
         '        <div class="w3-container w3-center w3-margin-top"><button class="w3-button w3-green" id="okButton">Odeslat</button></div>\n' +
         '        <div class="w3-container w3-center"><div id="errorInfo"></div></div>\n' +
@@ -39,6 +46,7 @@ function onStart() {
 }
 
 const beginnersHint = "Počítej stejně jako nápověda.<br/>Nápověda = jedna.<br/>Odpověď = dva (jedna + 1)";
+
 function showBeginnersHint() {
     setErrorInfo(beginnersHint);
 }
