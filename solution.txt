@@ -4,12 +4,12 @@
 4 - "kvarta"    ->      "kvinta"    // prima-sekunda-tercie-kvarta-kvinta - např. stupně na gymnáziu
 5 - "ečný/ičný" ->      "ový"       // přípony pro oxidační čísla atomu (5 = ečný/istý, 6 = ový)
 6 - "Saturn"    ->      "Uran"      // Planety sluneční soustavy od Slunce (6. Saturn, 7. Uran)
-7 - "sssssss"   ->      "oooooooo"  // 7x"s"(sedmkrát) -> 8x"o"(osmkrát)
-8 - "tů-tů-tů-tu-tu" -> "tů-tů-tů-tů-tu"    // morseovka čísel: 8 = ---.. 9 = ----.
-9 - "efwfu"     ->      "eftfu"     // posun o 1 dopředu v abecedě - bez diakritiky 9 = d(e)e(f)v(w)e(f)t(u) 10 = d(e)e(f)s(t)e(f)t(u)
-10 - "55"       ->      "89"        // Fibonnaciho posloupnost (1 1 2 3 5 8 13 21 34 55 89...)
-11 - "121"      ->      "144"       // 11x11 = 121, 12x12 = 144
-12 - "iksíí"    ->      "iksííí"    // římské číslovky foneticky - XII -> XIII
+7 - "sssssss"   ->      "oooooooo"              // 7x"s"(sedmkrát) -> 8x"o"(osmkrát)
+8 - "tů-tů-tů-tu-tu" -> "tů-tů-tů-tů-tu"        // morseovka čísel: 8 = ---.. 9 = ----.
+9 - "efwfu"     ->      "eftfu"                 // posun o 1 dopředu v abecedě - bez diakritiky 9 = d(e)e(f)v(w)e(f)t(u) 10 = d(e)e(f)s(t)e(f)t(u)
+10 - "55"       ->      "89"                    // Fibonnaciho posloupnost (1 1 2 3 5 8 13 21 34 55 89...)
+11 - "121"      ->      "144"                   // 11x11 = 121, 12x12 = 144
+12 - "iksíí"    ->      "iksííí"                // římské číslovky foneticky - XII -> XIII
 13 - "Millard Fillmore" -> "Franklin Pierce"    // Millard Fillmore = 13. prezident USA, Franklin Pierce = 14. prezident USA
 14 - "Šiša Pangma"      -> "Gyachung Kang"      // Šiša Pangma = 14. nejvyšší hora světa, Gyachung Kang = 115. nejvyšší hora světa
 15 - "Jules Bordet"     -> "August Krogh"       // Nobelova cena za fyziologii nebo lékařství (15. a 16. udělení)

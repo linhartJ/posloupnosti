@@ -1,6 +1,6 @@
 let p2Current: number = 0;
 const p2LevelOffset = 7;
-const p2Fm = [30, 0, 24, 22, 3, 0, 22, 0, 5, 39, 1, 34, 42, 3, 39, 45, 57, 8, 22, 0, 34, 39, 28, 41, 46, 37, 29, 39, 1, 14, 58, 2, 39, 24, 37, 39, 4, 3, 28, 60, 16, 37, 39, 42, 35, 14, 35, 8, 29, 39, 1, 22, 37, 36, 34, 39, 9, 34, 39, 54, 19, 39, 24, 22, 8, 46, 62, 44, 12];
+const p2Fm = "Tajné heslo: GAGARIN";
 
 document.addEventListener("DOMContentLoaded", p2OnStart);
 
@@ -17,8 +17,8 @@ function p2OnStart() {
 
 function p2SetNextTask() {
     if (setTask(++p2Current, p2LevelOffset, p2Tasks)) {
-        setHint(`Gratulujeme, jste u konce. Tajnou zprávu sdělte šéfredaktorce Monče.`);
-        setErrorInfo(p2Fm.reduce((acc, idx) => acc + c[idx], ""));
+        setHint(finalInstruction);
+        spiderSaysTemp(p2Fm, p2Current, p2Fm);
     }
 }
 
@@ -39,10 +39,10 @@ function p2TrySubmit(e: Event | undefined) {
 }
 
 const p2Tasks: Task[] = [
-    new Task([24, 24, 24, 24, 24, 24, 24], [35, 35, 35, 35, 35, 35, 35, 35]),
-    new Task([22, 44, 26, 22, 44, 26, 22, 44, 26, 22, 8, 26, 22, 8], [22, 44, 26, 22, 44, 26, 22, 44, 26, 22, 44, 26, 22, 8]),
-    new Task([37, 55, 61, 55, 8], [37, 55, 22, 55, 8]),
-    new Task([7, 7], [21, 54]),
-    new Task([25, 33, 25], [25, 31, 31]),
-    new Task([60, 1, 24, 5, 5], [60, 1, 24, 5, 5, 5]),
+    new Task("sssssss", "oooooooo"),
+    new Task("tů-tů-tů-tu-tu", "tů-tů-tů-tů-tu"),
+    new Task("efwfu", "eftfu"),
+    new Task("55", "89"),
+    new Task("121", "144"),
+    new Task("iksíí", "iksííí")
 ];

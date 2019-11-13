@@ -1,5 +1,10 @@
-const c = ['n', 'k', 'ž', 'a', 'z', 'í', 'x', '5', 'u', 'm', '7', 'R', '.', 'W', 'd', 'S', 'j', 'P', 'B', '0', 'b', '8', 't', 'Š', 's', '1', '-', 'š', 'l', ',', 'I', '4', 'G', '2', 'á', 'o', 'r', 'e', 'K', ' ', '/', 'é', 'v', 'č', 'ů', 'c', 'p', 'A', 'F', 'g', 'C', 'J', 'ý', 'U', '9', 'f', 'M', 'h', 'y', 'ř', 'i', 'w', 'ň'];
+const c = [];
 const beginnersHint = "Počítej stejně jako nápověda.<br/>Nápověda = jedna.<br/>Odpověď = dva (jedna + 1)";
+const finalInstruction = "Gratulujeme, jste u konce. Tajné heslo zašlete na redakce@cvvz.cz.<br/>Pokud budete mezi prvními, můžete něco vyhrát.<br/>Nezapomeňte se podepsat (klidně přezdívkou) a vyhlížejte další číslo Náchodského vlákna!";
+
+function df(d: number[]): string {
+    return d.reduce((acc, idx) => acc + c[idx], "");
+}
 
 const sm = [
     "Dobře ty!",
@@ -25,9 +30,9 @@ class Task {
     public hint: string;
     private value: string;
 
-    constructor(hint: number[], value: number[]) {
-        this.hint = hint.reduce((acc, idx) => acc + c[idx], "");
-        this.value = value.reduce((acc, idx) => acc + c[idx], "");
+    constructor(hint: string, value: string) {
+        this.hint = hint;
+        this.value = value;
     }
 
     matchesUserInput = (): boolean => {

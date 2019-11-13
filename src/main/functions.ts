@@ -1,6 +1,7 @@
-
-
 function setHint(hintText) {
+    if (hintText === finalInstruction) {
+        document.getElementById("h-label").innerHTML = "";
+    }
     const hint = document.getElementById("hint");
     hint.innerHTML = hintText;
 }
@@ -27,7 +28,7 @@ function reinitDOM() {
     body.innerHTML = '<body>\n' +
         '        <div class="w3-container w3-center"><h1 class="w3-text-white">Posloupnosti</h1></div>\n' +
         '        <div class="w3-container w3-center w3-margin"><div class="w3-text-white">Level <span id="level" class="w3-badge w3-red"></span></div></div>\n' +
-        '        <div class="w3-container w3-center w3-margin"><div class="w3-text-white" >Nápověda: <span id="hint"></span></div>\n' +
+        '        <div class="w3-container w3-center w3-margin"><div class="w3-text-white" ><span id="h-label">Nápověda: </span><span id="hint"></span></div>\n' +
         '        <div class="w3-container w3-center w3-margin"><form id="form"><input class="" id="userInput" type="text"/></form></div>\n' +
         '        <div class="w3-container w3-center w3-margin-top"><button class="w3-button w3-green" id="okButton">Odeslat</button></div>\n' +
         '        <div class="w3-container w3-center"><div id="errorInfo"></div></div>\n' +
@@ -60,11 +61,11 @@ function setErrorInfo(infoMessage: string) {
 
 let tempHash: number = 0;
 
-function spiderSaysTemp(randomErrorMessage, currentTaskIdx: number) {
+function spiderSaysTemp(randomErrorMessage, currentTaskIdx: number, onClearMsg: string = "") {
     const r = Math.random();
     tempHash = r;
     setErrorInfo(randomErrorMessage);
-    const onClearMessage = shouldDisplayBeginnersHint(currentTaskIdx) ? beginnersHint : "";
+    const onClearMessage = shouldDisplayBeginnersHint(currentTaskIdx) ? beginnersHint : onClearMsg;
     setTimeout(() => {
         if (tempHash === r) setErrorInfo(onClearMessage)
     }, 2000);
