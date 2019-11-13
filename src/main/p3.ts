@@ -1,5 +1,5 @@
 let p3Current: number = 0;
-const p3LevelOffset = 7;
+const p3LevelOffset = 13;
 const p3Fm = [30, 0, 24, 22, 3, 0, 22, 0, 5, 39, 1, 34, 42, 3, 39, 45, 57, 8, 22, 0, 34, 39, 28, 41, 46, 37, 29, 39, 1, 14, 58, 2, 39, 24, 37, 39, 4, 3, 28, 60, 16, 37, 39, 42, 35, 14, 35, 8, 29, 39, 1, 22, 37, 36, 34, 39, 9, 34, 39, 54, 19, 39, 24, 22, 8, 46, 62, 44, 12];
 
 document.addEventListener("DOMContentLoaded", p3OnStart);
