@@ -5,6 +5,7 @@ const concat = require('gulp-concat');
 const fs = require('fs');
 var uglify = require('gulp-uglify');
 const tsProject = ts.createProject('tsconfig.json');
+var rename = require("gulp-rename");
 
 function cleanTask() {
     if (!fs.existsSync("./build")) fs.mkdirSync("./build");
@@ -98,18 +99,26 @@ function copyIndex() {
         .pipe(gulp.dest("build/p3"));
 }
 
+function copyRozcestnik() {
+    return gulp.src("src/main/rozcestnik.html")
+        .pipe(rename("index.html"))
+        .pipe(gulp.dest("build"));
+}
+
+function copyRozcestnikScript() {
+    return gulp.src("build/temp/rozcestnik.js")
+        .pipe(rename("index.js"))
+        .pipe(gulp.dest("build"));
+}
+
 function copyStylesheet() {
     return gulp.src("src/main/w3.css")
-        .pipe(gulp.dest("build/p1"))
-        .pipe(gulp.dest("build/p2"))
-        .pipe(gulp.dest("build/p3"));
+        .pipe(gulp.dest("build"));
 }
 
 function copyResources() {
     return gulp.src("src/resources/*")
-        .pipe(gulp.dest("build/p1"))
-        .pipe(gulp.dest("build/p2"))
-        .pipe(gulp.dest("build/p3"));
+        .pipe(gulp.dest("build"));
 }
 
-exports.default = gulp.series(cleanTask, initDirs, typescriptTask, joinJS, encryptSensitiveStuff, copyIndex, copyStylesheet, copyResources, cleanTemp);
+exports.default = gulp.series(cleanTask, initDirs, typescriptTask, joinJS, copyRozcestnikScript, encryptSensitiveStuff, copyIndex, copyRozcestnik, copyStylesheet, copyResources, cleanTemp);

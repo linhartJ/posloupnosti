@@ -52,9 +52,9 @@ function getUserInput(): HTMLInputElement {
 function setErrorInfo(infoMessage: string) {
     const info = document.getElementById("errorInfo");
     if (infoMessage === "") {
-        info.style.backgroundImage = "url('noBubble.png')";
+        info.style.backgroundImage = "url('../noBubble.png')";
     } else {
-        info.style.backgroundImage = "url('withBubble.png')"
+        info.style.backgroundImage = "url('../withBubble.png')"
     }
     info.innerHTML = infoMessage;
 }
